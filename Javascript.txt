@@ -1,0 +1,71 @@
+<!Doctype html>
+<html>
+    <head>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 30%;
+            }
+            
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th> Quiz Number </th>
+                <th> Quiz Mark </th>
+            </tr>
+            <tr>
+                <td> Quiz Number: 1 </td>
+                <td> <input type="text" id="quiz1" required> </td>
+            </tr>
+            <tr>
+                <td> Quiz Number: 2 </td>
+                <td> <input id="quiz2" type="number" /> </td>
+            </tr>
+            <tr>
+                <td> Quiz Number: 3 </td>
+                <td> <input  id="quiz3" type="number" /> </td>
+            </tr>
+        </table>
+        <br />
+        <button onclick="getAverage();"> Calculate Average </button>
+
+        <p id="averagePara"> </p>
+        <p id="remarksPara"> </p>
+        <script>
+            function getAverage() {
+                                    // get element from the page        look at what is in there
+                let quiz1 = Number(document.getElementById("quiz1").value);
+                let quiz2 = Number(document.getElementById("quiz2").value);
+                let quiz3 = Number(document.getElementById("quiz3").value);
+                let total = quiz1 + quiz2 + quiz3;
+                let average = total / 3;
+                // get element from page                change content in the element                           The content
+                document.getElementById("averagePara").innerHTML = 'The average of 3 quizzes: ' + average.toFixed(4);
+
+
+                if(average >= 80){
+                    document.getElementById("remarksPara").innerHTML = 'You are a Star Student.';
+
+                    // get element from the page           chage the color
+                    document.getElementById("remarksPara").style.color = "green";
+                } else if(average < 80 && average >= 60){
+                    document.getElementById("remarksPara").innerHTML = 'Keep up the Good Work';
+                    document.getElementById("remarksPara").style.color = "#DAB600";
+                }else if(average < 60){
+                    document.getElementById("remarksPara").innerHTML = 'Parent Signature Required';
+                    document.getElementById("remarksPara").style.color = "red";
+                }
+            }
+    </script>
+
+    </body>
+</html>
